@@ -5,3 +5,6 @@
 	font-family: 'ClashDisplay';
 	src: url('../public/fonts/ClashDisplay-Semibold.otf');
 }
+.no-scrollbar::-webkit-scrollbar {
+	display: none;
+}

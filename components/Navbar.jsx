@@ -12,9 +12,8 @@ export default function Navbar() {
 		connector: new InjectedConnector(),
 	});
 	const { disconnect } = useDisconnect();
-	console.log(address);
 	return (
-		<nav className='flex px-5 py-3 justify-between'>
+		<nav className='flex px-7 py-3 justify-between'>
 			<Image src={logo} width={100} height={100} alt='Logo' />
 			<div className='flex justify-evenly items-center w-1/3 self-center text-white'>
 				<p>
