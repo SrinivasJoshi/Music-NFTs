@@ -5,6 +5,7 @@ import logo from '../public/images/MNFTlogo.png';
 import RegularButton from './RegularButton';
 import { useAccount, useConnect, useDisconnect } from 'wagmi';
 import { InjectedConnector } from 'wagmi/connectors/injected';
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 export default function Navbar() {
 	const { address, isConnected } = useAccount();
@@ -23,13 +24,7 @@ export default function Navbar() {
 				<p>
 					<Link href='/create'>Create</Link>
 				</p>
-				{isConnected ? (
-					address
-				) : (
-					<RegularButton onClick={() => connect()}>
-						Connect Wallet
-					</RegularButton>
-				)}
+				{isConnected ? 'address' : <ConnectButton />}
 			</div>
 		</nav>
 	);
