@@ -20,9 +20,9 @@ export default function Home() {
 						of digital creators.Discover the best NFT collections.
 					</p>
 					<div className='w-3/12 flex justify-between'>
-						<RegularButton>
-							<Link href='/marketplace'>Explore</Link>
-						</RegularButton>
+						<Link href='/marketplace'>
+							<RegularButton text={'Explore'} />
+						</Link>
 						<StrokeButton>
 							<Link href='/create'>Create</Link>
 						</StrokeButton>

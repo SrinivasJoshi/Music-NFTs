@@ -1,9 +1,12 @@
 import React from 'react';
 import Card from '../components/Card';
+import Navbar from '../components/Navbar';
 
 export default function Marketplace() {
 	return (
-		<div className='bg-bgBlue min-h-screen px-12 py-12'>
+		<div className='bg-bgBlue min-h-screen px-12'>
+			<Navbar />
+
 			<h1 className='mb-12 text-center text-transparent text-4xl bg-rainbow bg-clip-text font-display'>
 				Marketplace
 			</h1>
