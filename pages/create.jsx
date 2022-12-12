@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { Contract, providers, utils } from 'ethers';
+import { useState } from 'react';
+import { Contract } from 'ethers';
 import { abi, NFT_CONTRACT_ADDRESS } from '../constants';
 import Navbar from '../components/Navbar';
 import axios from 'axios';
@@ -67,12 +67,10 @@ export default function Create() {
 		setLoadingState('Uploading data to IPFS!');
 		let finalJson;
 		try {
-			const formData = new FormData();
-			formData.append('file', file);
 			const resFile = await axios({
 				method: 'post',
 				url: 'https://api.pinata.cloud/pinning/pinFileToIPFS',
-				data: formData,
+				data,
 				headers: {
 					pinata_api_key: `${process.env.NEXT_PUBLIC_PINATA_API_KEY}`,
 					pinata_secret_api_key: `${process.env.NEXT_PUBLIC_PINATA_API_SECRET}`,
@@ -92,7 +90,7 @@ export default function Create() {
 			const nftContract = new Contract(NFT_CONTRACT_ADDRESS, abi, signer);
 			const tx = await nftContract.mintToken(finalJson, amount, price);
 			await tx.wait();
-			setLoading('Done!');
+			setLoading('Done1');
 			// Router.push('/profile');
 		} catch (error) {
 			console.log('Unable to mint NFT : ', error);
