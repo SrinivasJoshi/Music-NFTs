@@ -54,10 +54,11 @@ export default function Navbar() {
 				<p>{walletConnected && <Link href='/profile'>My NFTs</Link>}</p>
 
 				{walletConnected ? (
-					<p className='py-1 px-2 border border-current rounded-2xl shadow-sm shadow-slate-300	'>
-						{address.slice(0, 5) + '...' + address.slice(-4)}
-					</p>
+					''
 				) : (
+					// <p className='py-1 px-2 border border-current rounded-2xl shadow-sm shadow-slate-300	'>
+					// 	{address.slice(0, 5) + '...' + address.slice(-4)}
+					// </p>
 					<RegularButton
 						clickFunction={connectWallet}
 						text={'Connect Wallet'}
