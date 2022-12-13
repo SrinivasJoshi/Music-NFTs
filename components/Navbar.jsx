@@ -51,7 +51,7 @@ export default function Navbar() {
 					<Link href='/create'>Create</Link>
 				</p>
 
-				<p>{walletConnected && <Link href='/profile'>My NFTs</Link>}</p>
+				<p>{walletConnected && <Link href='/profile'>Profile</Link>}</p>
 
 				{walletConnected ? (
 					''

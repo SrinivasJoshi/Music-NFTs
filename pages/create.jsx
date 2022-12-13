@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Contract } from 'ethers';
+import { Contract, utils } from 'ethers';
 import { abi, NFT_CONTRACT_ADDRESS } from '../constants';
 import Navbar from '../components/Navbar';
 import axios from 'axios';
@@ -15,7 +15,9 @@ export default function Create() {
 	const [language, setLanguage] = useState('');
 	const [amount, setAmount] = useState('');
 	const [price, setPrice] = useState('');
-	const [musicUrl, setMusicUrl] = useState('');
+	const [musicUrl, setMusicUrl] = useState(
+		'ipfs://QmZea8jgGgSuwog2BkSuStMaggruact7iA7Do6G6qUz5cs'
+	);
 	const [imageUrl, setImageUrl] = useState('');
 	const [loadingState, setLoadingState] = useState('Upload');
 
@@ -52,7 +54,8 @@ export default function Create() {
 		}
 	};
 
-	const mintNft = async () => {
+	const mintNft = async (e) => {
+		e.preventDefault();
 		//make json data
 		if (!albumName || !price || !imageUrl || !musicUrl) return;
 		const data = JSON.stringify({
@@ -69,17 +72,17 @@ export default function Create() {
 		try {
 			const resFile = await axios({
 				method: 'post',
-				url: 'https://api.pinata.cloud/pinning/pinFileToIPFS',
+				url: 'https://api.pinata.cloud/pinning/pinJSONToIPFS',
 				data,
 				headers: {
 					pinata_api_key: `${process.env.NEXT_PUBLIC_PINATA_API_KEY}`,
 					pinata_secret_api_key: `${process.env.NEXT_PUBLIC_PINATA_API_SECRET}`,
-					'Content-Type': 'multipart/form-data',
+					'Content-Type': 'application/json',
 				},
 			});
 
 			finalJson = `ipfs://${resFile.data.IpfsHash}`;
-			console.log(finalJson);
+			console.log('Final Json : ', finalJson);
 		} catch (error) {
 			console.log('Error uploading json to IPFS : ', error);
 		}
@@ -88,10 +91,11 @@ export default function Create() {
 		try {
 			const signer = await getProviderOrSigner(web3modalRef, true);
 			const nftContract = new Contract(NFT_CONTRACT_ADDRESS, abi, signer);
-			const tx = await nftContract.mintToken(finalJson, amount, price);
+			const _price = utils.parseEther(price);
+			const tx = await nftContract.mintToken(finalJson, amount, _price);
 			await tx.wait();
-			setLoading('Done1');
-			// Router.push('/profile');
+			setLoadingState('Done! - proce');
+			Router.push('/profile');
 		} catch (error) {
 			console.log('Unable to mint NFT : ', error);
 		}
@@ -199,7 +203,7 @@ export default function Create() {
 							className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
 							placeholder='0.01 MATIC'
 							required
-							min={0.000001}
+							// min={0.000001}
 						/>
 					</div>
 					<div>
