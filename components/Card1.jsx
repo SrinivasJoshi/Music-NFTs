@@ -1,7 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
 import trialImage from '../public/images/dhundla.jpeg';
-import { useState } from 'react';
 import { getProviderOrSigner } from '../store/util';
 import { Contract } from 'ethers';
 import { abi, NFT_CONTRACT_ADDRESS } from '../constants';

@@ -41,7 +41,9 @@ export default function Navbar() {
 
 	return (
 		<nav className='flex px-7 py-3 justify-between'>
-			<Image src={logo} width={100} height={100} alt='Logo' />
+			<Link href='/'>
+				<Image src={logo} width={100} height={100} alt='Logo' />
+			</Link>
 			<div className='flex justify-evenly items-center w-2/3 lg:w-1/3 self-center text-white'>
 				<p>
 					<Link href='/marketplace'>Marketplace</Link>

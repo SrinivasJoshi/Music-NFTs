@@ -4,7 +4,6 @@ import { Contract } from 'ethers';
 import { abi, NFT_CONTRACT_ADDRESS } from '../constants';
 import useweb3store from '../store/web3store';
 import Navbar from '../components/Navbar';
-import Card from '../components/Card1';
 import Card2 from '../components/Card2';
 
 export default function Profile() {
@@ -17,7 +16,7 @@ export default function Profile() {
 
 	const getMyNfts = async () => {
 		try {
-			const provider = await getProviderOrSigner(web3modalRef, false);
+			const provider = await getProviderOrSigner(web3modalRef);
 			const nftContract = new Contract(NFT_CONTRACT_ADDRESS, abi, provider);
 			const _myNfts = await nftContract.fetchMyNFTs();
 			setMyNFTs(_myNfts);
@@ -28,7 +27,7 @@ export default function Profile() {
 	};
 	const getMyListedNfts = async () => {
 		try {
-			const provider = await getProviderOrSigner(web3modalRef, false);
+			const provider = await getProviderOrSigner(web3modalRef);
 			const nftContract = new Contract(NFT_CONTRACT_ADDRESS, abi, provider);
 			const _listedNfts = await nftContract.fetchItemsListed();
 			setListedNFTs(_listedNfts);
