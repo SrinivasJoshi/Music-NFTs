@@ -1,5 +1,5 @@
 export const NFT_CONTRACT_ADDRESS =
-	'0xd2E615419837dDA3797C97024E00EEa46b126EB6';
+	'0x145d45EebAbCa3fFe0c1c4dF25Ef171AFb89b192';
 export const abi = [
 	{
 		inputs: [],
@@ -32,32 +32,6 @@ export const abi = [
 		type: 'event',
 	},
 	{
-		inputs: [
-			{
-				internalType: 'uint256',
-				name: 'tokenId',
-				type: 'uint256',
-			},
-		],
-		name: 'createMarketItem',
-		outputs: [],
-		stateMutability: 'nonpayable',
-		type: 'function',
-	},
-	{
-		inputs: [
-			{
-				internalType: 'uint256',
-				name: 'tokenId',
-				type: 'uint256',
-			},
-		],
-		name: 'createMarketSale',
-		outputs: [],
-		stateMutability: 'payable',
-		type: 'function',
-	},
-	{
 		anonymous: false,
 		inputs: [
 			{
@@ -84,83 +58,9 @@ export const abi = [
 				name: 'amount',
 				type: 'uint256',
 			},
-			{
-				indexed: false,
-				internalType: 'bool',
-				name: 'isUpForSale',
-				type: 'bool',
-			},
 		],
 		name: 'MarketItemCreated',
 		type: 'event',
-	},
-	{
-		inputs: [
-			{
-				internalType: 'string',
-				name: 'tokenURI',
-				type: 'string',
-			},
-			{
-				internalType: 'uint256',
-				name: 'amount',
-				type: 'uint256',
-			},
-			{
-				internalType: 'uint256',
-				name: 'price',
-				type: 'uint256',
-			},
-		],
-		name: 'mintToken',
-		outputs: [
-			{
-				internalType: 'uint256',
-				name: '',
-				type: 'uint256',
-			},
-		],
-		stateMutability: 'nonpayable',
-		type: 'function',
-	},
-	{
-		inputs: [
-			{
-				internalType: 'address',
-				name: '_operator',
-				type: 'address',
-			},
-			{
-				internalType: 'address',
-				name: '_from',
-				type: 'address',
-			},
-			{
-				internalType: 'uint256',
-				name: '_id',
-				type: 'uint256',
-			},
-			{
-				internalType: 'uint256',
-				name: '_value',
-				type: 'uint256',
-			},
-			{
-				internalType: 'bytes',
-				name: '_data',
-				type: 'bytes',
-			},
-		],
-		name: 'onERC1155Received',
-		outputs: [
-			{
-				internalType: 'bytes4',
-				name: '',
-				type: 'bytes4',
-			},
-		],
-		stateMutability: 'nonpayable',
-		type: 'function',
 	},
 	{
 		anonymous: false,
@@ -180,110 +80,6 @@ export const abi = [
 		],
 		name: 'OwnershipTransferred',
 		type: 'event',
-	},
-	{
-		inputs: [],
-		name: 'renounceOwnership',
-		outputs: [],
-		stateMutability: 'nonpayable',
-		type: 'function',
-	},
-	{
-		inputs: [
-			{
-				internalType: 'address',
-				name: 'from',
-				type: 'address',
-			},
-			{
-				internalType: 'address',
-				name: 'to',
-				type: 'address',
-			},
-			{
-				internalType: 'uint256[]',
-				name: 'ids',
-				type: 'uint256[]',
-			},
-			{
-				internalType: 'uint256[]',
-				name: 'amounts',
-				type: 'uint256[]',
-			},
-			{
-				internalType: 'bytes',
-				name: 'data',
-				type: 'bytes',
-			},
-		],
-		name: 'safeBatchTransferFrom',
-		outputs: [],
-		stateMutability: 'nonpayable',
-		type: 'function',
-	},
-	{
-		inputs: [
-			{
-				internalType: 'address',
-				name: 'from',
-				type: 'address',
-			},
-			{
-				internalType: 'address',
-				name: 'to',
-				type: 'address',
-			},
-			{
-				internalType: 'uint256',
-				name: 'id',
-				type: 'uint256',
-			},
-			{
-				internalType: 'uint256',
-				name: 'amount',
-				type: 'uint256',
-			},
-			{
-				internalType: 'bytes',
-				name: 'data',
-				type: 'bytes',
-			},
-		],
-		name: 'safeTransferFrom',
-		outputs: [],
-		stateMutability: 'nonpayable',
-		type: 'function',
-	},
-	{
-		inputs: [
-			{
-				internalType: 'address',
-				name: 'operator',
-				type: 'address',
-			},
-			{
-				internalType: 'bool',
-				name: 'approved',
-				type: 'bool',
-			},
-		],
-		name: 'setApprovalForAll',
-		outputs: [],
-		stateMutability: 'nonpayable',
-		type: 'function',
-	},
-	{
-		inputs: [
-			{
-				internalType: 'string',
-				name: 'newuri',
-				type: 'string',
-			},
-		],
-		name: 'setURI',
-		outputs: [],
-		stateMutability: 'nonpayable',
-		type: 'function',
 	},
 	{
 		anonymous: false,
@@ -321,19 +117,6 @@ export const abi = [
 		],
 		name: 'TransferBatch',
 		type: 'event',
-	},
-	{
-		inputs: [
-			{
-				internalType: 'address',
-				name: 'newOwner',
-				type: 'address',
-			},
-		],
-		name: 'transferOwnership',
-		outputs: [],
-		stateMutability: 'nonpayable',
-		type: 'function',
 	},
 	{
 		anonymous: false,
@@ -440,6 +223,19 @@ export const abi = [
 		type: 'function',
 	},
 	{
+		inputs: [
+			{
+				internalType: 'uint256',
+				name: 'tokenId',
+				type: 'uint256',
+			},
+		],
+		name: 'createMarketSale',
+		outputs: [],
+		stateMutability: 'payable',
+		type: 'function',
+	},
+	{
 		inputs: [],
 		name: 'fetchItemsListed',
 		outputs: [
@@ -464,11 +260,6 @@ export const abi = [
 						internalType: 'uint256',
 						name: 'amount',
 						type: 'uint256',
-					},
-					{
-						internalType: 'bool',
-						name: 'isUpForSale',
-						type: 'bool',
 					},
 					{
 						internalType: 'string',
@@ -511,11 +302,6 @@ export const abi = [
 						type: 'uint256',
 					},
 					{
-						internalType: 'bool',
-						name: 'isUpForSale',
-						type: 'bool',
-					},
-					{
 						internalType: 'string',
 						name: 'tokenUri',
 						type: 'string',
@@ -556,11 +342,6 @@ export const abi = [
 						type: 'uint256',
 					},
 					{
-						internalType: 'bool',
-						name: 'isUpForSale',
-						type: 'bool',
-					},
-					{
 						internalType: 'string',
 						name: 'tokenUri',
 						type: 'string',
@@ -599,6 +380,68 @@ export const abi = [
 		type: 'function',
 	},
 	{
+		inputs: [
+			{
+				internalType: 'string',
+				name: 'tokenURI',
+				type: 'string',
+			},
+			{
+				internalType: 'uint256',
+				name: 'amount',
+				type: 'uint256',
+			},
+			{
+				internalType: 'uint256',
+				name: 'price',
+				type: 'uint256',
+			},
+		],
+		name: 'mintToken',
+		outputs: [],
+		stateMutability: 'nonpayable',
+		type: 'function',
+	},
+	{
+		inputs: [
+			{
+				internalType: 'address',
+				name: '_operator',
+				type: 'address',
+			},
+			{
+				internalType: 'address',
+				name: '_from',
+				type: 'address',
+			},
+			{
+				internalType: 'uint256',
+				name: '_id',
+				type: 'uint256',
+			},
+			{
+				internalType: 'uint256',
+				name: '_value',
+				type: 'uint256',
+			},
+			{
+				internalType: 'bytes',
+				name: '_data',
+				type: 'bytes',
+			},
+		],
+		name: 'onERC1155Received',
+		outputs: [
+			{
+				internalType: 'bytes4',
+				name: '',
+				type: 'bytes4',
+			},
+		],
+		stateMutability: 'nonpayable',
+		type: 'function',
+	},
+	{
 		inputs: [],
 		name: 'owner',
 		outputs: [
@@ -609,6 +452,110 @@ export const abi = [
 			},
 		],
 		stateMutability: 'view',
+		type: 'function',
+	},
+	{
+		inputs: [],
+		name: 'renounceOwnership',
+		outputs: [],
+		stateMutability: 'nonpayable',
+		type: 'function',
+	},
+	{
+		inputs: [
+			{
+				internalType: 'address',
+				name: 'from',
+				type: 'address',
+			},
+			{
+				internalType: 'address',
+				name: 'to',
+				type: 'address',
+			},
+			{
+				internalType: 'uint256[]',
+				name: 'ids',
+				type: 'uint256[]',
+			},
+			{
+				internalType: 'uint256[]',
+				name: 'amounts',
+				type: 'uint256[]',
+			},
+			{
+				internalType: 'bytes',
+				name: 'data',
+				type: 'bytes',
+			},
+		],
+		name: 'safeBatchTransferFrom',
+		outputs: [],
+		stateMutability: 'nonpayable',
+		type: 'function',
+	},
+	{
+		inputs: [
+			{
+				internalType: 'address',
+				name: 'from',
+				type: 'address',
+			},
+			{
+				internalType: 'address',
+				name: 'to',
+				type: 'address',
+			},
+			{
+				internalType: 'uint256',
+				name: 'id',
+				type: 'uint256',
+			},
+			{
+				internalType: 'uint256',
+				name: 'amount',
+				type: 'uint256',
+			},
+			{
+				internalType: 'bytes',
+				name: 'data',
+				type: 'bytes',
+			},
+		],
+		name: 'safeTransferFrom',
+		outputs: [],
+		stateMutability: 'nonpayable',
+		type: 'function',
+	},
+	{
+		inputs: [
+			{
+				internalType: 'address',
+				name: 'operator',
+				type: 'address',
+			},
+			{
+				internalType: 'bool',
+				name: 'approved',
+				type: 'bool',
+			},
+		],
+		name: 'setApprovalForAll',
+		outputs: [],
+		stateMutability: 'nonpayable',
+		type: 'function',
+	},
+	{
+		inputs: [
+			{
+				internalType: 'string',
+				name: 'newuri',
+				type: 'string',
+			},
+		],
+		name: 'setURI',
+		outputs: [],
+		stateMutability: 'nonpayable',
 		type: 'function',
 	},
 	{
@@ -628,6 +575,19 @@ export const abi = [
 			},
 		],
 		stateMutability: 'view',
+		type: 'function',
+	},
+	{
+		inputs: [
+			{
+				internalType: 'address',
+				name: 'newOwner',
+				type: 'address',
+			},
+		],
+		name: 'transferOwnership',
+		outputs: [],
+		stateMutability: 'nonpayable',
 		type: 'function',
 	},
 	{

@@ -12,7 +12,7 @@ export default function () {
 			</h1>
 			<div className='flex items-center justify-evenly px-5'>
 				<div className='flex flex-col items-center justify-evenly'>
-					<Image src={Wallet} width={40} height={40} />
+					<Image src={Wallet} width={40} height={40} alt='Wallet Icon' />
 					<h2 className='text-2xl font-semibold my-5'>Set up your wallet</h2>
 					<p className='text-sm text-center w-3/4'>
 						Once you’ve set up your wallet of choice, connect it to OpenSea by
@@ -22,7 +22,7 @@ export default function () {
 				</div>
 
 				<div className='flex flex-col items-center justify-evenly'>
-					<Image src={Upload} width={40} height={40} />
+					<Image src={Upload} width={40} height={40} alt='Uplaod Icon' />
 					<h2 className='text-2xl font-semibold my-5'>
 						Upload & Create Collection
 					</h2>
@@ -34,7 +34,7 @@ export default function () {
 				</div>
 
 				<div className='flex flex-col items-center justify-evenly'>
-					<Image src={Bookmark} width={40} height={40} />
+					<Image src={Bookmark} width={40} height={40} alt='Sale Icon' />
 					<h2 className='text-2xl font-semibold my-5'>List them for sale</h2>
 					<p className='text-sm text-center w-3/4'>
 						Choose between auctions, fixed-price listings, and declining-price

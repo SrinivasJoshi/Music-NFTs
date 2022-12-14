@@ -24,7 +24,6 @@ contract NFT1155 is ERC1155, Ownable {
         address payable creator;
         uint256 price;
         uint256 amount;
-        bool isUpForSale;
         string tokenUri;
     }
 
@@ -32,15 +31,14 @@ contract NFT1155 is ERC1155, Ownable {
         uint256 tokenId,
         address payable creator,
         uint256 price,
-        uint256 amount,
-        bool isUpForSale
+        uint256 amount
     );
 
     function mintToken(
         string memory tokenURI,
         uint256 amount,
         uint256 price
-    ) public returns (uint256) {
+    ) public{
         require(price > 0, "Price must be at least 1 wei");
         uint256 newItemId = _tokenIds.current();
 
@@ -53,28 +51,13 @@ contract NFT1155 is ERC1155, Ownable {
             payable(msg.sender),
             price,
             amount,
-            false,
             tokenURI
         );
-        return newItemId;
-    }
-
-    //put the NFT on the market,except one(in js)
-    function createMarketItem(uint256 tokenId) public {
-        address creator = idToMarketItem[tokenId].creator;
-        uint256 amount = idToMarketItem[tokenId].amount;
-        uint256 price = idToMarketItem[tokenId].price;
-        require(msg.sender==creator,"Not the creator of NFT");
-
-        // setApprovalForAll(address(this), true);
-        // safeTransferFrom(msg.sender, address(this), tokenId, amount, "");
-        idToMarketItem[tokenId].isUpForSale=true;
         emit MarketItemCreated(
-            tokenId,
+            newItemId,
             payable(msg.sender),
             price,
-            amount,
-            true
+            amount
         );
     }
 
@@ -84,9 +67,8 @@ contract NFT1155 is ERC1155, Ownable {
         uint256 _price = idToMarketItem[tokenId].price;
         uint256 _amount = idToMarketItem[tokenId].amount;
         address _creator = idToMarketItem[tokenId].creator;
-        bool _isUpForSale = idToMarketItem[tokenId].isUpForSale;
 
-        require(_isUpForSale,"The item is not up for sale");
+        require(_amount >1,"This MNFT is sold out");
         require(
             msg.value >= _price,
             "Please submit the asking price in order to complete the purchase"
@@ -107,11 +89,9 @@ contract NFT1155 is ERC1155, Ownable {
 
         MarketItem[] memory items = new MarketItem[](itemCount);
         for (uint256 i = 0; i < itemCount; i++) {
-            if (idToMarketItem[i].isUpForSale == true) {
                 MarketItem storage currentItem = idToMarketItem[i];
                 items[currentIndex] = currentItem;
                 currentIndex += 1;
-            }
         }
         return items;
     }

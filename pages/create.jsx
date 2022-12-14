@@ -42,12 +42,12 @@ export default function Create() {
 				},
 			});
 
-			const ImgHash = `ipfs://${resFile.data.IpfsHash}`;
-			console.log(ImgHash);
+			const Hash = `https://gateway.pinata.cloud/ipfs/${resFile.data.IpfsHash}`;
+			console.log(Hash);
 			if (isMusic) {
-				setMusicUrl(ImgHash);
+				setMusicUrl(Hash);
 			} else {
-				setImageUrl(ImgHash);
+				setImageUrl(Hash);
 			}
 		} catch (error) {
 			console.log('Error uploading file to IPFS : ', error);
@@ -61,6 +61,7 @@ export default function Create() {
 		const data = JSON.stringify({
 			name: albumName,
 			image: imageUrl,
+			music: musicUrl,
 			description: '...',
 			creatorName,
 			language,
@@ -81,7 +82,7 @@ export default function Create() {
 				},
 			});
 
-			finalJson = `ipfs://${resFile.data.IpfsHash}`;
+			finalJson = `https://gateway.pinata.cloud/ipfs/${resFile.data.IpfsHash}`;
 			console.log('Final Json : ', finalJson);
 		} catch (error) {
 			console.log('Error uploading json to IPFS : ', error);
@@ -94,8 +95,8 @@ export default function Create() {
 			const _price = utils.parseEther(price);
 			const tx = await nftContract.mintToken(finalJson, amount, _price);
 			await tx.wait();
-			setLoadingState('Done! - proce');
-			Router.push('/profile');
+			setLoadingState('Done!');
+			Router.push('/marketplace');
 		} catch (error) {
 			console.log('Unable to mint NFT : ', error);
 		}
