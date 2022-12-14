@@ -2,7 +2,7 @@ import Card1 from '../components/Card1';
 import Navbar from '../components/Navbar';
 import { useState, useEffect } from 'react';
 import { getProviderOrSigner } from '../store/util';
-import { Contract } from 'ethers';
+import { BigNumber, Contract } from 'ethers';
 import { abi, NFT_CONTRACT_ADDRESS } from '../constants';
 import useweb3store from '../store/web3store';
 
@@ -39,7 +39,7 @@ export default function Marketplace() {
 			)}
 			<div className='grid gap-8 pb-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-4'>
 				{marketItems.map((nft) => {
-					return <Card1 nft={nft} />;
+					return <Card1 nft={nft} key={nft.tokenId} />;
 				})}
 			</div>
 		</div>

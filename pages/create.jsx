@@ -15,9 +15,7 @@ export default function Create() {
 	const [language, setLanguage] = useState('');
 	const [amount, setAmount] = useState('');
 	const [price, setPrice] = useState('');
-	const [musicUrl, setMusicUrl] = useState(
-		'ipfs://QmZea8jgGgSuwog2BkSuStMaggruact7iA7Do6G6qUz5cs'
-	);
+	const [musicUrl, setMusicUrl] = useState('');
 	const [imageUrl, setImageUrl] = useState('');
 	const [loadingState, setLoadingState] = useState('Upload');
 
@@ -221,6 +219,7 @@ export default function Create() {
 							id='file_input2'
 							accept='.mp3,audio/*'
 							type='file'
+							required
 						/>
 					</div>
 					<div>
@@ -236,6 +235,7 @@ export default function Create() {
 							id='file_input1'
 							accept='image/*'
 							type='file'
+							required
 						/>
 					</div>
 				</div>
