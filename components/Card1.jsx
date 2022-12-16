@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { getProviderOrSigner } from '../store/util';
-import { Contract, ethers, utils } from 'ethers';
+import { Contract, ethers } from 'ethers';
 import { abi, NFT_CONTRACT_ADDRESS } from '../constants';
 import useweb3store from '../store/web3store';
 import { Router } from 'next/router';
@@ -33,7 +33,7 @@ export default function Card1({ nft }) {
 			});
 			await tx.wait();
 			setLoading('Done!');
-			// Router.push('/profile');
+			Router.push('/profile');
 		} catch (error) {
 			console.log('Unable to create market sale', error);
 		}
@@ -41,11 +41,12 @@ export default function Card1({ nft }) {
 
 	return (
 		<div className='text-white p-3 rounded-lg flex flex-col items-center border border-white w-66 min-h-80'>
-			<img
-				src={nftData.image}
+			<Image
+				src={nftData.image ? nftData.image : ''}
 				className='rounded-lg'
 				width={300}
 				height={300}
+				alt='NFT Image'
 			/>
 			<div className='flex flex-col items-center w-full'>
 				<p className='font-bold text-xl self-center my-4'>{nftData.name}</p>
@@ -72,7 +73,8 @@ export default function Card1({ nft }) {
 			</div>
 			<button
 				className='bg-lightBlue px-6 py-1 text-white font-sans rounded-3xl'
-				onClick={createMarketSale}>
+				onClick={createMarketSale}
+				disabled={nft.amount.toNumber() === 0}>
 				{loading}
 			</button>
 		</div>

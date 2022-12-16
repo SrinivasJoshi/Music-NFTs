@@ -2,7 +2,7 @@ import Card1 from '../components/Card1';
 import Navbar from '../components/Navbar';
 import { useState, useEffect } from 'react';
 import { getProviderOrSigner } from '../store/util';
-import { BigNumber, Contract } from 'ethers';
+import { Contract } from 'ethers';
 import { abi, NFT_CONTRACT_ADDRESS } from '../constants';
 import useweb3store from '../store/web3store';
 

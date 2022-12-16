@@ -16,8 +16,8 @@ export default function Profile() {
 
 	const getMyNfts = async () => {
 		try {
-			const provider = await getProviderOrSigner(web3modalRef);
-			const nftContract = new Contract(NFT_CONTRACT_ADDRESS, abi, provider);
+			const signer = await getProviderOrSigner(web3modalRef, true);
+			const nftContract = new Contract(NFT_CONTRACT_ADDRESS, abi, signer);
 			const _myNfts = await nftContract.fetchMyNFTs();
 			setMyNFTs(_myNfts);
 			console.log(_myNfts);
@@ -27,8 +27,8 @@ export default function Profile() {
 	};
 	const getMyListedNfts = async () => {
 		try {
-			const provider = await getProviderOrSigner(web3modalRef);
-			const nftContract = new Contract(NFT_CONTRACT_ADDRESS, abi, provider);
+			const signer = await getProviderOrSigner(web3modalRef, true);
+			const nftContract = new Contract(NFT_CONTRACT_ADDRESS, abi, signer);
 			const _listedNfts = await nftContract.fetchItemsListed();
 			setListedNFTs(_listedNfts);
 			console.log(_listedNfts);
@@ -47,9 +47,9 @@ export default function Profile() {
 
 	const loopNFT = (nfts) => {
 		return (
-			<div className='grid gap-8 mb-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-4'>
+			<div className='grid gap-8 mt-10 grid-cols-1 sm:grid-cols-2 md:grid-cols-4'>
 				{nfts.map((nft) => {
-					return <Card2 nft={nft} />;
+					return <Card2 nft={nft} key={nft.tokenId} />;
 				})}
 			</div>
 		);
