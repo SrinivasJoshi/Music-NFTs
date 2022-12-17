@@ -28,10 +28,10 @@ export default function Marketplace() {
 		getMarketItems();
 	}, []);
 	return (
-		<div className='bg-bgBlue min-h-screen px-12'>
+		<div className='bg-bgBlue min-h-screen px-8 md:px-12'>
 			<Navbar />
 
-			<h1 className='mb-12 text-center text-transparent text-4xl bg-rainbow bg-clip-text font-display'>
+			<h1 className='mb-12 text-center text-transparent text-2xl md:text-4xl bg-rainbow bg-clip-text font-display'>
 				Marketplace
 			</h1>
 			{marketItems.length === 0 && (

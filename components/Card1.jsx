@@ -17,6 +17,9 @@ export default function Card1({ nft }) {
 		const res = await fetch(nft.tokenUri);
 		const data = await res.json();
 		setNftData(data);
+		if (nft.amount.toNumber() === 0) {
+			setLoading('Sold Out!');
+		}
 	};
 	useEffect(() => {
 		getNftData();

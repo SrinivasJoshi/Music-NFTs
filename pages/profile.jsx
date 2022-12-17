@@ -60,10 +60,10 @@ export default function Profile() {
 		getMyListedNfts();
 	}, []);
 	return (
-		<div className='bg-bgBlue min-h-screen px-12'>
+		<div className='bg-bgBlue min-h-screen px-6 md:px-12'>
 			<Navbar />
 			<main className='flex flex-col items-center'>
-				<h1 className='mb-8 text-center text-transparent text-4xl bg-rainbow bg-clip-text font-display'>
+				<h1 className='mb-8 text-center text-transparent text-2xl md:text-4xl bg-rainbow bg-clip-text font-display'>
 					Profile
 				</h1>
 				<div className='flex justify-center text-white w-4/5'>

@@ -104,9 +104,9 @@ export default function Create() {
 	};
 
 	return (
-		<div className='bg-bgBlue min-h-screen px-12'>
+		<div className='bg-bgBlue min-h-screen px-3 md:px-12'>
 			<Navbar />
-			<h1 className='mb-12 text-center text-transparent text-4xl bg-rainbow bg-clip-text font-display'>
+			<h1 className='mb-12 text-center text-transparent text-2xl md:text-3xl bg-rainbow bg-clip-text font-display'>
 				Create Your NFT
 			</h1>
 			<form className='px-12 flex flex-col' onSubmit={mintNft}>
@@ -244,7 +244,7 @@ export default function Create() {
 				</div>
 				<button
 					type='submit'
-					className='bg-lightBlue px-3 py-2 text-white font-sans rounded-3xl w-1/6 self-center my-5'>
+					className='bg-lightBlue w-fit px-3 py-2 text-white font-sans rounded-3xl self-center my-5'>
 					{loadingState}
 				</button>
 			</form>

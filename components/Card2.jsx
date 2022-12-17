@@ -38,7 +38,10 @@ export default function Card2({ nft }) {
 					</p>
 				</div>
 			</div>
-			<audio controls className='mt-4 w-4/5 h-6' src={nftData.music}></audio>
+			<audio
+				controls
+				className='mt-4 w-4/5 h-10 md:h-6'
+				src={nftData.music}></audio>
 		</div>
 	);
 }
