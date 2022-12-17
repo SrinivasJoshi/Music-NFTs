@@ -38,7 +38,9 @@ export default function Card1({ nft }) {
 			setLoading('Done!');
 			Router.push('/profile');
 		} catch (error) {
-			console.log('Unable to create market sale', error);
+			alert('You already own this NFT');
+			setLoading('Owned');
+			console.log('Unable to create market sale', { error });
 		}
 	};
 

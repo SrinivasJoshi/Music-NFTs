@@ -90,6 +90,7 @@ export default function Create() {
 		}
 
 		setLoadingState('Minting your NFT!');
+		setLoader(true);
 		try {
 			const signer = await getProviderOrSigner(web3modalRef, true);
 			const nftContract = new Contract(NFT_CONTRACT_ADDRESS, abi, signer);
@@ -97,14 +98,16 @@ export default function Create() {
 			const tx = await nftContract.mintToken(finalJson, amount, _price);
 			await tx.wait();
 			setLoadingState('Done!');
+			setLoader(false);
 			Router.push('/marketplace');
 		} catch (error) {
 			console.log('Unable to mint NFT : ', error);
+			setLoader(false);
 		}
 	};
 
 	return (
-		<div className='bg-bgBlue min-h-screen px-3 md:px-12'>
+		<div className='bg-bgBlue min-h-screen px-1 md:px-12'>
 			<Navbar />
 			<h1 className='mb-12 text-center text-transparent text-2xl md:text-3xl bg-rainbow bg-clip-text font-display'>
 				Create Your NFT
@@ -217,7 +220,7 @@ export default function Create() {
 						</label>
 						<input
 							onChange={(e) => uploadFileToIpfs(e, true)}
-							disabled={musicUrl.length !== 0}
+							disabled={loader || musicUrl.length !== 0}
 							className='block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 p-2.5'
 							id='file_input2'
 							accept='.mp3,audio/*'
@@ -233,7 +236,7 @@ export default function Create() {
 						</label>
 						<input
 							onChange={(e) => uploadFileToIpfs(e, false)}
-							disabled={imageUrl.length !== 0}
+							disabled={loader || imageUrl.length !== 0}
 							className='block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 p-2.5'
 							id='file_input1'
 							accept='image/*'
