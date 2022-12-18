@@ -65,11 +65,18 @@ export default function Navbar() {
 									Create
 								</Link>
 
-								<Link
-									href='/profile'
-									className=' hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium'>
-									Profile
-								</Link>
+								{!walletConnected ? (
+									<Link
+										href='/profile'
+										className=' hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium'>
+										Profile
+									</Link>
+								) : (
+									<RegularButton
+										text='Connect Wallet'
+										clickFunction={connectWallet}
+									/>
+								)}
 							</div>
 						</div>
 					</div>
@@ -144,11 +151,18 @@ export default function Navbar() {
 								</p>
 							</Link>
 
-							<Link href='/profile'>
-								<p className='text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium'>
+							{walletConnected ? (
+								<Link
+									href='/profile'
+									className=' hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium'>
 									Profile
-								</p>
-							</Link>
+								</Link>
+							) : (
+								<RegularButton
+									text='Connect Wallet'
+									clickFunction={connectWallet}
+								/>
+							)}
 						</div>
 					</div>
 				)}
